@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogiFlow - Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Style.css}">
+</head>
+<body>
+
+<!-- Header -->
+<div th:replace="~{fragmentos/header :: header}"></div>
+
+<!-- Sidebar -->
+<div class="container">
+    <div th:replace="~{fragmentos/sidebar :: sidebar}"></div>
+
+    <main class="main-content">
+
+        <section id="dashboard" class="form-section active">
+            <div class="page-header">
+                <h2 class="page-title">Dashboard</h2>
+                <p class="page-subtitle">Resumen general del sistema logístico</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 th:text="${dashboard.totalProductos}">0</h3>
+                        <p>Productos Totales</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon yellow">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 th:text="${dashboard.productosBajoStock}">0</h3>
+                        <p>Productos en Bajo Stock</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 th:text="${dashboard.totalPedidos}">0</h3>
+                        <p>Pedidos Totales</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 th:text="${dashboard.totalVentas}">0.00</h3>
+                        <p>Total Ventas</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 th:text="${dashboard.totalEnvios}">0</h3>
+                        <p>Envíos Totales</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon gray">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 th:text="${dashboard.totalCostoEnvios}">0.00</h3>
+                        <p>Costo Total Envíos</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>Pedidos por Estado</h3>
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Estado</th>
+                                    <th>Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="e : ${dashboard.pedidosPorEstado}">
+                                    <td th:text="${e.estado}">PENDIENTE</td>
+                                    <td th:text="${e.cantidad}">0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3>Envíos por Estado</h3>
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Estado</th>
+                                    <th>Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="e : ${dashboard.enviosPorEstado}">
+                                    <td th:text="${e.estado}">PREPARANDO</td>
+                                    <td th:text="${e.cantidad}">0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>Recientes Pedidos</h3>
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Pedido</th>
+                                    <th>Cliente</th>
+                                    <th>Estado</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="p : ${dashboard.recientesPedidos}">
+                                    <td th:text="${p.fechaPedido}">2024-01-01</td>
+                                    <td th:text="${p.numeroPedido}">#001</td>
+                                    <td th:text="${p.clienteNombre}">Cliente</td>
+                                    <td th:text="${p.estado}">PENDIENTE</td>
+                                    <td th:text="${p.total}">0.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3>Recientes Envíos</h3>
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Envio</th>
+                                    <th>Guía</th>
+                                    <th>Pedido</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="e : ${dashboard.recientesEnvios}">
+                                    <td th:text="${e.fechaEnvio}">2024-01-01 12:00</td>
+                                    <td th:text="${e.numeroEnvio}">ENV-001</td>
+                                    <td th:text="${e.numeroGuia}">GUIA-001</td>
+                                    <td th:text="${e.pedidoNumero}">#001</td>
+                                    <td th:text="${e.estado}">PREPARANDO</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3>Actividad Reciente</h3>
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Actividad</th>
+                                <th>Usuario</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="actividad : ${actividades}">
+                                <td th:text="${actividad.fecha}">2024-03-15 10:30</td>
+                                <td th:text="${actividad.descripcion}">Nuevo pedido #001234</td>
+                                <td th:text="${actividad.usuario}">Juan Pérez</td>
+                                <td th:text="${actividad.estado}" th:style="'color:' + ${actividad.color}">Completado</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!-- src/main/resources/templates/includes/Header.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<!-- Fragmento para Header -->
+<div th:fragment="header">
+    <header class="header">
+        <div class="logo-section">
+            <i class="fas fa-truck" style="font-size: 2rem;"></i>
+            <h1>LogiFlow</h1>
+        </div>
+        <div class="user-section">
+            <div class="user-info">
+                <strong th:text="${usuario != null ? usuario.nombre : 'Invitado'}">Invitado</strong> • 
+                <span th:text="${rolUsuario != null ? rolUsuario : 'USUARIO'}">USUARIO</span>
+            </div>
+            <form th:action="@{/logout}" method="post" style="display:inline;">
+                <button class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </form>
+        </div>
+    </header>
+</div>
+</body>
+</html>
