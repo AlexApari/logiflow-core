@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"> 
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+    
+  </style>
+</head>
+<body>
+<nav th:fragment="sidebar" class="sidebar" role="navigation" aria-label="Main sidebar">
+  <section class="nav-section">
+    <div class="sidebar-heading">
+      <div th:each="item : ${menu}">
+
+        <!-- Item SIN submenú -->
+        <a th:if="${item.subMenu == null}"
+           th:href="@{${item.path}}"
+           class="nav-item">
+          <i th:class="${item.icon}"></i>  <!-- Icono del item -->
+          <span th:text="${item.name}"></span>
+        </a>
+
+        <!-- Item CON submenú -->
+        <div th:if="${item.subMenu != null}" class="nav-item has-submenu">
+
+          <button type="button" class="toggle-heading" th:onclick="|this.nextElementSibling.classList.toggle('active')|">
+            <i th:class="${item.icon}"></i>  <!-- Icono del item padre -->
+            <span th:text="${item.name}"></span>
+          </button>
+
+          <div class="submenu" aria-hidden="true">
+            <div th:each="sub : ${item.subMenu}">
+              <a th:href="@{${sub.path}}" class="nav-item sub-item">
+                <i th:class="${sub.icon}"></i> <!-- Icono del subitem -->
+                <span th:text="${sub.name}"></span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+</nav>
+</body>
+</html>
