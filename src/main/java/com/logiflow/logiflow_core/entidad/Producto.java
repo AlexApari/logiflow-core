@@ -142,6 +142,9 @@ public class Producto {
     public Long getId() { return this.id; }
     public String getCodigo() { return this.codigo; }
     public String getNombre() { return this.nombre; }
+    public Categoria getCategoria() {
+		return this.categoria;
+	}
     public BigDecimal getPrecio() { return this.precio; }
     public Integer getStockActual() { return this.stockActual; }
     public Integer getStockMinimo() { return this.stockMinimo; }

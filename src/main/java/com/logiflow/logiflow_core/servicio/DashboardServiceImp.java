@@ -106,7 +106,7 @@ public class DashboardServiceImp implements DashboardService {
                         p.getId(),
                         p.getNombre(),
                         p.getCodigo(),
-                        p.getStockActual(),
+                        null, p.getStockActual(),
                         p.getPrecio()
                 ))
                 .collect(Collectors.toList());
