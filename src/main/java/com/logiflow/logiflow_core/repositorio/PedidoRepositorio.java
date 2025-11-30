@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
+import org.springframework.stereotype.Repository;
 import com.logiflow.logiflow_core.entidad.Pedido;
 import com.logiflow.logiflow_core.entidad.Pedido.EstadoPedido;
-
+@Repository
 public interface PedidoRepositorio extends JpaRepository<Pedido, Long> {
 
     // Latest orders to show on index

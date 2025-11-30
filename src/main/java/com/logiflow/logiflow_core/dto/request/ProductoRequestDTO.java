@@ -1,4 +1,4 @@
-package com.logiflow.logiflow_core.dto;
+package com.logiflow.logiflow_core.dto.request;
 
 import java.math.BigDecimal;
 
