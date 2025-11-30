@@ -46,7 +46,7 @@ public class SecurityConfig {
                 // Dashboard (allow controller path /dashboard and template path /dashboard.html)
                 .requestMatchers("/dashboard", "/dashboard.html").hasAnyAuthority("ADMIN", "SUPERVISOR", "OPERATOR", "VENDEDOR", "USUARIO")
                 // Catálogo
-                .requestMatchers("/Productos.jsp").hasAnyAuthority("ADMIN", "SUPERVISOR", "OPERATOR", "VENDEDOR")
+                .requestMatchers("/catalogo/productos","/catalogo/Productos.html").hasAnyAuthority("ADMIN", "SUPERVISOR", "OPERATOR", "VENDEDOR")
                 .requestMatchers("/categorias").hasAnyAuthority("ADMIN", "SUPERVISOR", "OPERATOR")
                 // Operaciones
                 .requestMatchers("/Proveedores.jsp").hasAnyAuthority("ADMIN", "SUPERVISOR", "OPERATOR")
@@ -60,6 +60,8 @@ public class SecurityConfig {
                 .requestMatchers("/rol.jsp", "/configuracion.jsp", "/auditoria.jsp", "/logs.jsp", "/backup.jsp").hasAuthority("ADMIN")
                 // Personal
                 .requestMatchers("/Perfil.jsp", "/cambiar-password.jsp").hasAnyAuthority("ADMIN", "SUPERVISOR", "OPERATOR", "VENDEDOR", "USUARIO")
+                .requestMatchers("/error").permitAll()
+                	    
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form

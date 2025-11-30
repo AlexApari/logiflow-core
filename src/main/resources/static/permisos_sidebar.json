@@ -23,7 +23,7 @@
 		"subMenu": [
 			{
 				"title": "Productos",
-				"url": "/Productos.jsp",
+				"url": "/catalogo/productos",
 				"icon": "fas fa-shopping-cart",
 				"roles": [
 					"ADMIN",

@@ -103,4 +103,166 @@ public class Proveedor {
     public void preUpdate() {
         fechaModificacion = LocalDateTime.now();
     }
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getRuc() {
+		return ruc;
+	}
+
+	public void setRuc(String ruc) {
+		this.ruc = ruc;
+	}
+
+	public String getRazonSocial() {
+		return razonSocial;
+	}
+
+	public void setRazonSocial(String razonSocial) {
+		this.razonSocial = razonSocial;
+	}
+
+	public String getNombreComercial() {
+		return nombreComercial;
+	}
+
+	public void setNombreComercial(String nombreComercial) {
+		this.nombreComercial = nombreComercial;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public String getCiudad() {
+		return ciudad;
+	}
+
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
+	}
+
+	public String getPais() {
+		return pais;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public String getTelefonoAlternativo() {
+		return telefonoAlternativo;
+	}
+
+	public void setTelefonoAlternativo(String telefonoAlternativo) {
+		this.telefonoAlternativo = telefonoAlternativo;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getEmailAlternativo() {
+		return emailAlternativo;
+	}
+
+	public void setEmailAlternativo(String emailAlternativo) {
+		this.emailAlternativo = emailAlternativo;
+	}
+
+	public String getPersonaContacto() {
+		return personaContacto;
+	}
+
+	public void setPersonaContacto(String personaContacto) {
+		this.personaContacto = personaContacto;
+	}
+
+	public String getCargoContacto() {
+		return cargoContacto;
+	}
+
+	public void setCargoContacto(String cargoContacto) {
+		this.cargoContacto = cargoContacto;
+	}
+
+	public CondicionPago getCondicionPago() {
+		return condicionPago;
+	}
+
+	public void setCondicionPago(CondicionPago condicionPago) {
+		this.condicionPago = condicionPago;
+	}
+
+	public BigDecimal getLimiteCredito() {
+		return limiteCredito;
+	}
+
+	public void setLimiteCredito(BigDecimal limiteCredito) {
+		this.limiteCredito = limiteCredito;
+	}
+
+	public Calificacion getCalificacion() {
+		return calificacion;
+	}
+
+	public void setCalificacion(Calificacion calificacion) {
+		this.calificacion = calificacion;
+	}
+
+	public Boolean getActivo() {
+		return activo;
+	}
+
+	public void setActivo(Boolean activo) {
+		this.activo = activo;
+	}
+
+	public String getNotas() {
+		return notas;
+	}
+
+	public void setNotas(String notas) {
+		this.notas = notas;
+	}
+
+	public LocalDateTime getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(LocalDateTime fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+	public LocalDateTime getFechaModificacion() {
+		return fechaModificacion;
+	}
+
+	public void setFechaModificacion(LocalDateTime fechaModificacion) {
+		this.fechaModificacion = fechaModificacion;
+	}
+
+	
 }

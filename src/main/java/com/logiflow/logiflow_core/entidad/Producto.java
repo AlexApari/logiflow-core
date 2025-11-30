@@ -7,9 +7,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Data
 @Entity
@@ -23,7 +21,7 @@ import lombok.Setter;
         @Index(name = "idx_stock_bajo", columnList = "stock_actual, stock_minimo"),
         @Index(name = "idx_codigo_barras", columnList = "codigo_barras")
 })
-@AllArgsConstructor@NoArgsConstructor@Getter@Setter@Builder
+@AllArgsConstructor@NoArgsConstructor@Builder
 public class Producto {
 
     @Id
@@ -149,4 +147,192 @@ public class Producto {
     public Integer getStockActual() { return this.stockActual; }
     public Integer getStockMinimo() { return this.stockMinimo; }
     public LocalDateTime getFechaCreacion() { return this.fechaCreacion; }
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public Proveedor getProveedor() {
+		return proveedor;
+	}
+
+	public void setProveedor(Proveedor proveedor) {
+		this.proveedor = proveedor;
+	}
+
+	public BigDecimal getPrecioCompra() {
+		return precioCompra;
+	}
+
+	public void setPrecioCompra(BigDecimal precioCompra) {
+		this.precioCompra = precioCompra;
+	}
+
+	public BigDecimal getMargenGanancia() {
+		return margenGanancia;
+	}
+
+	public void setMargenGanancia(BigDecimal margenGanancia) {
+		this.margenGanancia = margenGanancia;
+	}
+
+	public String getUnidadMedida() {
+		return unidadMedida;
+	}
+
+	public void setUnidadMedida(String unidadMedida) {
+		this.unidadMedida = unidadMedida;
+	}
+
+	public Integer getStockInicial() {
+		return stockInicial;
+	}
+
+	public void setStockInicial(Integer stockInicial) {
+		this.stockInicial = stockInicial;
+	}
+
+	public Integer getStockMaximo() {
+		return stockMaximo;
+	}
+
+	public void setStockMaximo(Integer stockMaximo) {
+		this.stockMaximo = stockMaximo;
+	}
+
+	public String getUbicacion() {
+		return ubicacion;
+	}
+
+	public void setUbicacion(String ubicacion) {
+		this.ubicacion = ubicacion;
+	}
+
+	public String getPasillo() {
+		return pasillo;
+	}
+
+	public void setPasillo(String pasillo) {
+		this.pasillo = pasillo;
+	}
+
+	public String getEstante() {
+		return estante;
+	}
+
+	public void setEstante(String estante) {
+		this.estante = estante;
+	}
+
+	public String getNivel() {
+		return nivel;
+	}
+
+	public void setNivel(String nivel) {
+		this.nivel = nivel;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
+	public String getCodigoBarras() {
+		return codigoBarras;
+	}
+
+	public void setCodigoBarras(String codigoBarras) {
+		this.codigoBarras = codigoBarras;
+	}
+
+	public Boolean getActivo() {
+		return activo;
+	}
+
+	public void setActivo(Boolean activo) {
+		this.activo = activo;
+	}
+
+	public Boolean getEsPerecible() {
+		return esPerecible;
+	}
+
+	public void setEsPerecible(Boolean esPerecible) {
+		this.esPerecible = esPerecible;
+	}
+
+	public Integer getDiasVencimiento() {
+		return diasVencimiento;
+	}
+
+	public void setDiasVencimiento(Integer diasVencimiento) {
+		this.diasVencimiento = diasVencimiento;
+	}
+
+	public BigDecimal getPeso() {
+		return peso;
+	}
+
+	public void setPeso(BigDecimal peso) {
+		this.peso = peso;
+	}
+
+	public String getDimensiones() {
+		return dimensiones;
+	}
+
+	public void setDimensiones(String dimensiones) {
+		this.dimensiones = dimensiones;
+	}
+
+	public LocalDateTime getFechaModificacion() {
+		return fechaModificacion;
+	}
+
+	public void setFechaModificacion(LocalDateTime fechaModificacion) {
+		this.fechaModificacion = fechaModificacion;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public void setPrecio(BigDecimal precio) {
+		this.precio = precio;
+	}
+
+	public void setStockActual(Integer stockActual) {
+		this.stockActual = stockActual;
+	}
+
+	public void setStockMinimo(Integer stockMinimo) {
+		this.stockMinimo = stockMinimo;
+	}
+
+	public void setFechaCreacion(LocalDateTime fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+    
+    
+
+	
 }

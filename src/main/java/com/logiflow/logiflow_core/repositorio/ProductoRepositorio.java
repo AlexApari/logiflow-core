@@ -6,9 +6,10 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import com.logiflow.logiflow_core.entidad.Producto;
-
+@Repository
 public interface ProductoRepositorio extends JpaRepository<Producto, Long> {
 	
 	boolean existsByCodigo(String codigo);
@@ -22,4 +23,6 @@ public interface ProductoRepositorio extends JpaRepository<Producto, Long> {
 	           "GROUP BY p.id " +
 	           "ORDER BY SUM(dp.cantidad) DESC")
 	    List<Producto> findProductosMasVendidos();
+
+	 void deleteByCodigo(String codigo);
 }

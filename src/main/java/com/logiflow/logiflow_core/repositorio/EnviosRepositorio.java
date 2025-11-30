@@ -9,7 +9,8 @@ import org.springframework.data.repository.query.Param;
 
 import com.logiflow.logiflow_core.entidad.Envios;
 import com.logiflow.logiflow_core.entidad.Envios.EstadoEnvio;
-
+import org.springframework.stereotype.Repository;
+@Repository
 public interface EnviosRepositorio extends JpaRepository<Envios, Long> {
 
     // Latest shipments to show on index

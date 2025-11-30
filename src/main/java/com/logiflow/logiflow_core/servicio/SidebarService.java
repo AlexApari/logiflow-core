@@ -21,9 +21,9 @@ public class SidebarService {
         ObjectMapper mapper = new ObjectMapper();
         InputStream is = getClass().getClassLoader().getResourceAsStream("static/permisos_sidebar.json");
         rawMenu = mapper.readValue(is, new TypeReference<List<MenuItemDTO>>() {});
-        rawMenu.forEach(item -> {
-            System.out.println("RAW ITEM: " + item.getName() + ", " + item.getPath() + ", Submenu: " + item.getSubMenu());
-        });
+//        rawMenu.forEach(item -> {
+//            System.out.println("RAW ITEM: " + item.getName() + ", " + item.getPath() + ", Submenu: " + item.getSubMenu());
+//        });
     }
 
     public List<MenuItemDTO> getMenuForRoles(Set<String> rolesUsuario) {
@@ -48,13 +48,13 @@ public class SidebarService {
             List<MenuItemDTO> filtered = item.getSubMenu().stream()
                     .filter(sub -> {
                         boolean access = hasAccess(sub.getRoles(), rolesUsuario);
-                        System.out.println("   Subitem: " + sub.getName() + " roles: " + sub.getRoles() + " -> access: " + access);
+                        //System.out.println("   Subitem: " + sub.getName() + " roles: " + sub.getRoles() + " -> access: " + access);
                         return access;
                     })
                     .toList();
             copy.setSubMenu(filtered.isEmpty() ? null : filtered);
         }
-        System.out.println("Item final: " + copy.getName() + " Submenu: " + copy.getSubMenu());
+        //System.out.println("Item final: " + copy.getName() + " Submenu: " + copy.getSubMenu());
         
         return copy;
     }
