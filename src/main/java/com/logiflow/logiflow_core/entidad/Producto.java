@@ -2,6 +2,7 @@ package com.logiflow.logiflow_core.entidad;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -73,19 +74,10 @@ public class Producto {
     // INVENTARIO
     // -----------------------
 
-    @Column(name = "stock_inicial")
-    private Integer stockInicial = 0;
-
     @Column(name = "stock_actual")
     private Integer stockActual = 0;
 
-    @Column(name = "stock_minimo")
-    private Integer stockMinimo = 0;
-
-    @Column(name = "stock_maximo")
-    private Integer stockMaximo = 1000;
-
-    // -----------------------
+      // -----------------------
     // UBICACIÓN FÍSICA
     // -----------------------
 
@@ -106,7 +98,8 @@ public class Producto {
 
     @Column(name = "codigo_barras", length = 50)
     private String codigoBarras;
-
+    
+    @Column(name="activo", nullable=false)
     private Boolean activo = true;
 
     @Column(name = "es_perecible")
@@ -135,6 +128,11 @@ public class Producto {
     public void preUpdate() {
         fechaModificacion = LocalDateTime.now();
     }
+ // En la clase Producto.java
+
+    @OneToMany(mappedBy = "producto")
+    private List<DetallePedido> detallesPedido;
+
 
     // Explicit getters to satisfy IDE/compiler when lombok isn't processed
     public Long getId() { return this.id; }
@@ -145,7 +143,6 @@ public class Producto {
 	}
     public BigDecimal getPrecio() { return this.precio; }
     public Integer getStockActual() { return this.stockActual; }
-    public Integer getStockMinimo() { return this.stockMinimo; }
     public LocalDateTime getFechaCreacion() { return this.fechaCreacion; }
 
 	public String getDescripcion() {
@@ -186,22 +183,6 @@ public class Producto {
 
 	public void setUnidadMedida(String unidadMedida) {
 		this.unidadMedida = unidadMedida;
-	}
-
-	public Integer getStockInicial() {
-		return stockInicial;
-	}
-
-	public void setStockInicial(Integer stockInicial) {
-		this.stockInicial = stockInicial;
-	}
-
-	public Integer getStockMaximo() {
-		return stockMaximo;
-	}
-
-	public void setStockMaximo(Integer stockMaximo) {
-		this.stockMaximo = stockMaximo;
 	}
 
 	public String getUbicacion() {
@@ -324,9 +305,6 @@ public class Producto {
 		this.stockActual = stockActual;
 	}
 
-	public void setStockMinimo(Integer stockMinimo) {
-		this.stockMinimo = stockMinimo;
-	}
 
 	public void setFechaCreacion(LocalDateTime fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;

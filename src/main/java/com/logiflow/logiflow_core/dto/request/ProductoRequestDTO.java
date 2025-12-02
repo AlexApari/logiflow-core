@@ -13,7 +13,7 @@ public class ProductoRequestDTO {
 	    private BigDecimal precio;
 	    private String unidadMedida;
 
-	    private Integer stockInicial;
+	    private Integer stockActual;
 
 	    private String imagen;
 
@@ -66,12 +66,7 @@ public class ProductoRequestDTO {
 		public void setUnidadMedida(String unidadMedida) {
 			this.unidadMedida = unidadMedida;
 		}
-		public Integer getStockInicial() {
-			return stockInicial;
-		}
-		public void setStockInicial(Integer stockInicial) {
-			this.stockInicial = stockInicial;
-		}
+		
 		public String getImagen() {
 			return imagen;
 		}
@@ -113,7 +108,7 @@ public class ProductoRequestDTO {
 			super();
 		}
 		public ProductoRequestDTO(String codigo, String nombre, String descripcion, Long categoriaId,
-				Long proveedorId, BigDecimal precio, String unidadMedida, Integer stockInicial, String imagen,
+				Long proveedorId, BigDecimal precio, String unidadMedida, Integer stockActual, String imagen,
 				Boolean activo, Boolean esPerecible, Integer diasVencimiento, BigDecimal peso, String dimensiones) {
 			super();
 			this.codigo = codigo;
@@ -123,7 +118,7 @@ public class ProductoRequestDTO {
 			this.proveedorId = proveedorId;
 			this.precio = precio;
 			this.unidadMedida = unidadMedida;
-			this.stockInicial = stockInicial;
+			this.stockActual = stockActual;
 			this.imagen = imagen;
 			this.activo = activo;
 			this.esPerecible = esPerecible;
@@ -131,4 +126,11 @@ public class ProductoRequestDTO {
 			this.peso = peso;
 			this.dimensiones = dimensiones;
 		}
+		public Integer getStockActual() {
+			return stockActual;
+		}
+		public void setStockActual(Integer stockActual) {
+			this.stockActual = stockActual;
+		}
+		
 }

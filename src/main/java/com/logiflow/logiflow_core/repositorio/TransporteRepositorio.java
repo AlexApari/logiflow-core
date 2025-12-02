@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface TransporteRepository extends JpaRepository<Transporte, Long> {
+public interface TransporteRepositorio extends JpaRepository<Transporte, Long> {
 
     // Buscar por placa exacta
     Optional<Transporte> findByPlacaVehiculo(String placaVehiculo);

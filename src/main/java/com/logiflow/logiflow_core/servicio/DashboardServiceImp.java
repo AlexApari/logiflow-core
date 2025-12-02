@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.logiflow.logiflow_core.dto.response.*;
 import com.logiflow.logiflow_core.entidad.Envios.EstadoEnvio;
-import com.logiflow.logiflow_core.entidad.Pedido;
 import com.logiflow.logiflow_core.entidad.Pedido.EstadoPedido;
 import com.logiflow.logiflow_core.entidad.Producto;
 import com.logiflow.logiflow_core.repositorio.EnviosRepositorio;
@@ -43,10 +42,11 @@ public class DashboardServiceImp implements DashboardService {
         dto.setTotalProductos(totalProductos);
 
         long bajoStock = productoRepositorio.findAll()
-                .stream()
-                .filter(p -> p.getStockActual() != null && p.getStockMinimo() != null && p.getStockActual() <= p.getStockMinimo())
-                .count();
-        dto.setProductosBajoStock(bajoStock);
+        	    .stream()
+        	    .filter(p -> p.getStockActual() != null && p.getStockActual() <= 30)
+        	    .count();
+        	dto.setProductosBajoStock(bajoStock);
+
 
         dto.setTopProductos(obtenerTopProductosVendidos(5));
         dto.setRecientesProductos(obtenerProductosRecientes(5));
@@ -107,7 +107,9 @@ public class DashboardServiceImp implements DashboardService {
                         p.getNombre(),
                         p.getCodigo(),
                         null, p.getStockActual(),
-                        p.getPrecio()
+                        p.getPrecio(),
+                        p.getActivo()
+                        
                 ))
                 .collect(Collectors.toList());
     }
@@ -120,7 +122,9 @@ public class DashboardServiceImp implements DashboardService {
                 .map(p -> new PedidoResumenDTO(
                         p.getId(),
                         p.getNumeroPedido(),
-                        p.getCliente() != null ? p.getCliente().toString() : null,
+                        p.getCliente() != null ? 
+                        	    p.getCliente().getNombres() + " " + p.getCliente().getApellidos() :
+                        	    "Sin cliente",
                         p.getFechaPedido(),
                         p.getEstado() != null ? p.getEstado().name() : null,
                         p.getTotal()

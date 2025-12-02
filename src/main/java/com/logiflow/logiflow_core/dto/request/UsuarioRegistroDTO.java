@@ -1,7 +1,6 @@
 package com.logiflow.logiflow_core.dto.request;
 
 import java.time.LocalDateTime;
-import com.logiflow.logiflow_core.entidad.Rol;
 
 public class UsuarioRegistroDTO {
 
@@ -19,7 +18,7 @@ public class UsuarioRegistroDTO {
 	private UsuarioRegistroDTO creadoPor;
 	private UsuarioRegistroDTO modificadoPor;
 	private LocalDateTime fechaModificacion;
-	private Rol rol;
+	private String rol;
 
 	public Long getId() { return id; }
 	public void setId(Long id) { this.id = id; }
@@ -63,7 +62,7 @@ public class UsuarioRegistroDTO {
 	public LocalDateTime getFechaModificacion() { return fechaModificacion; }
 	public void setFechaModificacion(LocalDateTime fechaModificacion) { this.fechaModificacion = fechaModificacion; }
 
-	public Rol getRol() { return rol; }
-	public void setRol(Rol rol) { this.rol = rol; }
+	public String getRol() { return rol; }
+	public void setRol(String rol) { this.rol = rol; }
 
 }

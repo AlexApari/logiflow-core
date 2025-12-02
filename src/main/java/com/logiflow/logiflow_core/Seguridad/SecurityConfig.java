@@ -49,9 +49,9 @@ public class SecurityConfig {
                 .requestMatchers("/catalogo/productos","/catalogo/Productos.html").hasAnyAuthority("ADMIN", "SUPERVISOR", "OPERATOR", "VENDEDOR")
                 .requestMatchers("/categorias").hasAnyAuthority("ADMIN", "SUPERVISOR", "OPERATOR")
                 // Operaciones
-                .requestMatchers("/Proveedores.jsp").hasAnyAuthority("ADMIN", "SUPERVISOR", "OPERATOR")
+                .requestMatchers("/operaciones/proveedores","/operaciones/proveedores.html").hasAnyAuthority("ADMIN", "SUPERVISOR", "OPERATOR")
                 .requestMatchers("/Clientes.jsp").hasAnyAuthority("ADMIN", "SUPERVISOR", "OPERATOR", "VENDEDOR", "USUARIO")
-                .requestMatchers("/Pedidos.jsp").hasAnyAuthority("ADMIN", "SUPERVISOR", "OPERATOR", "VENDEDOR", "USUARIO")
+                .requestMatchers("/operaciones/pedidos","/operaciones/pedidos.html").hasAnyAuthority("ADMIN", "SUPERVISOR", "OPERATOR", "VENDEDOR", "USUARIO")
                 // Inventario y Transporte
                 .requestMatchers("/Inventario.jsp", "/Transportes.jsp").hasAnyAuthority("ADMIN", "SUPERVISOR", "OPERATOR")
                 // Reportes

@@ -3,10 +3,6 @@ package com.logiflow.logiflow_core.dto.response;
 
 import java.time.LocalDateTime;
 
-import com.logiflow.logiflow_core.entidad.Rol;
-
-
-
 public class UsuarioRespuestaDTO {
 	private Long id;
 	private String username;
@@ -14,7 +10,7 @@ public class UsuarioRespuestaDTO {
 	private String nombre;
 	private String apellido;
 	private String telefono;
-	private Rol rol;
+	private String rol;
 	private Boolean activo;
 	public Long getId() {
 		return id;
@@ -52,10 +48,10 @@ public class UsuarioRespuestaDTO {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	public Rol getRol() {
+	public String getRol() {
 		return rol;
 	}
-	public void setRol(Rol rol) {
+	public void setRol(String rol) {
 		this.rol = rol;
 	}
 	public Boolean getActivo() {

@@ -10,17 +10,19 @@ public class ProductoResumenDTO {
     private String categoriaNombre;
     private Integer stockActual;
     private BigDecimal precio;
+    private Boolean Activo;
 
     public ProductoResumenDTO() {}
 
     public ProductoResumenDTO(Long id, String codigo, String nombre,
-                              String categoriaNombre, Integer stockActual, BigDecimal precio) {
+                              String categoriaNombre, Integer stockActual, BigDecimal precio, Boolean Activo) {
         this.id = id;
         this.codigo = codigo;
         this.nombre = nombre;
         this.categoriaNombre = categoriaNombre;
         this.stockActual = stockActual;
         this.precio = precio;
+        this.Activo= Activo;
     }
 
 	public Long getId() {
@@ -72,5 +74,18 @@ public class ProductoResumenDTO {
 	}
 
     // Getters y setters...
+	public ProductoResumenDTO(String codigo, String nombre, BigDecimal precio) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.precio = precio;
+    }
+
+	public Boolean getActivo() {
+		return Activo;
+	}
+
+	public void setActivo(Boolean activo) {
+		Activo = activo;
+	}
 
 }

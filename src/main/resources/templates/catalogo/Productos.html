@@ -57,9 +57,8 @@
 									th:field="*{precio}" step="0.01" placeholder="0.00" required />
 							</div>
 							<div class="form-group">
-								<label class="form-label">Stock Inicial <span
-									class="text-danger">*</span></label> <input type="number"
-									th:field="*{stockInicial}"
+								<label class="form-label">Stock<span class="text-danger">*</span></label>
+								<input type="number" th:field="*{stockActual}" min="0"
 									placeholder="Cantidad inicial en stock" required />
 							</div>
 						</div>
@@ -140,16 +139,11 @@
 						<div class="d-flex" style="gap: 8px; margin-top: 8px;">
 							<button type="submit" class="custom-btn primary"
 								th:text="${productoForm.codigo != null} ? 'Actualizar Producto' : 'Crear Producto'"></button>
-
 							<button type="reset" class="custom-btn secondary">Limpiar</button>
-
-							<button type="button" class="custom-btn danger"
-								onclick="confirmarEliminacion(document.getElementById('codigo').value)">
-								Eliminar</button>
-
-							<!-- Campo oculto o input con el código del producto -->
-							<input type="hidden" id="codigo"
-								th:value="${productoForm.codigo}" />
+							<button type="submit"
+								th:class="${activo} ? 'custom-btn danger btn-sm' : 'custom-btn success btn-sm'">
+								<span th:text="${activo} ? 'Desactivar' : 'Activar'"></span>
+							</button>
 
 						</div>
 
@@ -172,7 +166,7 @@
 								<th>Stock Actual</th>
 								<th>Categoría</th>
 								<th>Stock Actual</th>
-								<th>Acciones</th>
+								<th>Activo</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -183,10 +177,19 @@
 								<td th:text="${p.stockActual}"></td>
 								<td th:text="${p.categoriaNombre}"></td>
 								<td th:text="${p.stockActual}"></td>
+								
 								<td>
 									<div class="action-buttons">
-										<input type="hidden" name="codigo" th:value="${p.codigo}" />
-										<button type="submit" class="custom-btn danger btn-sm">Eliminar</button>
+										<form method="post"
+											th:action="@{/catalogo/productos/activar-desactivar}" th:class="${p.activo} ? 'custom-btn danger btn-sm' : 'custom-btn success btn-sm'">
+											<input type="hidden" name="codigo" th:value="${p.codigo}" />
+
+											<button type="submit"
+												th:class="${p.activo} ? 'custom-btn danger btn-sm' : 'custom-btn success btn-sm'">
+												<span th:text="${p.activo} ? 'Desactivar' : 'Activar'"></span>
+											</button>
+										</form>
+
 										<a
 											th:href="@{/catalogo/productos/editar/{codigo}(codigo=${p.codigo})}"
 											class="custom-btn primary btn-sm"><button type="submit"

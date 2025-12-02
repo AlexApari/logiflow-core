@@ -67,4 +67,95 @@ public class DetallePedido {
         if (descuentoPorcentaje == null) descuentoPorcentaje = BigDecimal.ZERO;
         if (descuentoMonto == null) descuentoMonto = BigDecimal.ZERO;
     }
+
+
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
+	}
+
+
+	public Producto getProducto() {
+		return producto;
+	}
+
+
+	public void setProducto(Producto producto) {
+		this.producto = producto;
+	}
+
+
+	public Integer getCantidad() {
+		return cantidad;
+	}
+
+
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
+	}
+
+
+	public BigDecimal getPrecioUnitario() {
+		return precioUnitario;
+	}
+
+
+	public void setPrecioUnitario(BigDecimal precioUnitario) {
+		this.precioUnitario = precioUnitario;
+	}
+
+
+	public BigDecimal getDescuentoPorcentaje() {
+		return descuentoPorcentaje;
+	}
+
+
+	public void setDescuentoPorcentaje(BigDecimal descuentoPorcentaje) {
+		this.descuentoPorcentaje = descuentoPorcentaje;
+	}
+
+
+	public BigDecimal getDescuentoMonto() {
+		return descuentoMonto;
+	}
+
+
+	public void setDescuentoMonto(BigDecimal descuentoMonto) {
+		this.descuentoMonto = descuentoMonto;
+	}
+
+
+	public BigDecimal getSubtotal() {
+		return subtotal;
+	}
+
+
+	public void setSubtotal(BigDecimal subtotal) {
+		this.subtotal = subtotal;
+	}
+
+
+	public String getNotas() {
+		return notas;
+	}
+
+
+	public void setNotas(String notas) {
+		this.notas = notas;
+	}
+    
 }
