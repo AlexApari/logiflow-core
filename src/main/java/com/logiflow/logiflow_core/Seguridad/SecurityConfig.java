@@ -50,7 +50,7 @@ public class SecurityConfig {
                 .requestMatchers("/categorias").hasAnyAuthority("ADMIN", "SUPERVISOR", "OPERATOR")
                 // Operaciones
                 .requestMatchers("/operaciones/proveedores","/operaciones/proveedores.html").hasAnyAuthority("ADMIN", "SUPERVISOR", "OPERATOR")
-                .requestMatchers("/Clientes.jsp").hasAnyAuthority("ADMIN", "SUPERVISOR", "OPERATOR", "VENDEDOR", "USUARIO")
+                .requestMatchers("/operaciones/clientes","/operaciones/clientes.html").hasAnyAuthority("ADMIN", "SUPERVISOR", "OPERATOR", "VENDEDOR", "USUARIO")
                 .requestMatchers("/operaciones/pedidos","/operaciones/pedidos.html").hasAnyAuthority("ADMIN", "SUPERVISOR", "OPERATOR", "VENDEDOR", "USUARIO")
                 // Inventario y Transporte
                 .requestMatchers("/Inventario.jsp", "/Transportes.jsp").hasAnyAuthority("ADMIN", "SUPERVISOR", "OPERATOR")

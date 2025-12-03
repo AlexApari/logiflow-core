@@ -13,6 +13,7 @@ public interface ProductoService {
 	ProductoRequestDTO obtenerProductoParaEditar(String codigo);
 	ProductoResumenDTO actualizarProducto(String codigo, ProductoRequestDTO productoRequestDTO);
 	void cambiarEstadoProducto(String codigo);
+	List<ProductoResumenDTO> listarPorCategoria(Long categoriaId);
 	
 
 }

@@ -10,5 +10,6 @@ public interface PedidoServicio {
   PedidoResumenDTO registrar(PedidoRequestDTO pedidoRequestDTO);
   PedidoResumenDTO obtenerPorId(Long Id);
   List<PedidoResumenDTO>listar();
+  List<PedidoResumenDTO> listarPorEstado(String estado);
   
 }

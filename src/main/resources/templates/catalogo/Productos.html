@@ -20,136 +20,29 @@
 
 		<main class="main-content">
 
-			<h2 class="mb-3 page-title">
-				<i class="fas fa-boxes me-2"></i>Gestión de Productos
-			</h2>
+					
+			<div class="d-flex justify-content-between align-items-center mb-3">
+				<a th:href="@{/catalogo/productos/nuevo}" class="btn btn-primary">
+					<i class="fas fa-plus"></i> Nuevo Ítem
+				</a>
 
-			<!-- Formulario de Producto -->
-			<section class="content-card">
-				<div class="usuario-card">
-					<form th:action="@{/catalogo/productos/crear}"
-						th:object="${productoForm}" method="post">
+				<form class="form-inline" method="get"
+					th:action="@{/catalogo/productos}">
+					<div class="form-group">
+						 <select name="categoria"
+							class="form-control" onchange="this.form.submit()">
 
-						<div class="form-group">
-							<label class="form-label">Código <span
-								class="text-danger">*</span></label> <input type="text"
-								th:field="*{codigo}" class="input-text"
-								placeholder="Código del producto" required />
-						</div>
+							<option value="">Seleccionar categoría</option>
+							<option value="1">Electrónica</option>
+							<option value="2">Ropa</option>
+							<option value="3">Hogar</option>
+							<option value="4">Deportes</option>
+							<option value="5">Alimentos</option>
+						</select>
+					</div>
+				</form>
 
-						<div class="form-group">
-							<label class="form-label">Nombre <span
-								class="text-danger">*</span></label> <input type="text"
-								th:field="*{nombre}" class="input-text"
-								placeholder="Nombre del producto" required />
-						</div>
-
-						<div class="form-group">
-							<label class="form-label">Descripción</label>
-							<textarea th:field="*{descripcion}" rows="2"
-								placeholder="Descripción del producto"></textarea>
-						</div>
-
-						<div class="form-row">
-							<div class="form-group">
-								<label class="form-label">Precio <span
-									class="text-danger">*</span></label> <input type="number"
-									th:field="*{precio}" step="0.01" placeholder="0.00" required />
-							</div>
-							<div class="form-group">
-								<label class="form-label">Stock<span class="text-danger">*</span></label>
-								<input type="number" th:field="*{stockActual}" min="0"
-									placeholder="Cantidad inicial en stock" required />
-							</div>
-						</div>
-
-						<div class="form-row">
-							<div class="form-group">
-								<label class="form-label">Proveedor <span
-									class="text-danger">*</span></label> <select th:field="*{proveedorId}"
-									required>
-									<option value="">Seleccionar proveedor</option>
-									<option value="1">Proveedor SAC</option>
-									<option value="2">Insumos EIRL</option>
-									<option value="3">Servicios Integrales</option>
-									<option value="4">Comerciales XYZ</option>
-									<option value="5">Importadora Global</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label class="form-label">Categoría <span
-									class="text-danger">*</span></label> <select th:field="*{categoriaId}"
-									required>
-									<option value="">Seleccionar categoría</option>
-									<option value="1">Electrónica</option>
-									<option value="2">Ropa</option>
-									<option value="3">Hogar</option>
-									<option value="4">Deportes</option>
-									<option value="5">Alimentos</option>
-								</select>
-							</div>
-						</div>
-
-						<div class="form-row">
-							<div class="form-group">
-								<label class="form-label">Unidad de Medida</label> <input
-									type="text" th:field="*{unidadMedida}"
-									placeholder="Ej: kg, unidad, caja" />
-							</div>
-							<div class="form-group">
-								<label class="form-label">Peso (kg)</label> <input type="number"
-									th:field="*{peso}" step="0.01" placeholder="Peso en kilogramos" />
-							</div>
-						</div>
-
-						<div class="form-row">
-							<div class="form-group">
-								<label class="form-label">Dimensiones</label> <input type="text"
-									th:field="*{dimensiones}" placeholder="Ej: 10x20x15 cm" />
-							</div>
-							<div class="form-group">
-								<label class="form-label">¿Activo?</label> <select
-									th:field="*{activo}">
-									<option value="true">Sí</option>
-									<option value="false">No</option>
-								</select>
-							</div>
-						</div>
-
-						<div class="form-row">
-							<div class="form-group">
-								<label class="form-label">¿Es Perecible?</label> <select
-									th:field="*{esPerecible}">
-									<option value="false">No</option>
-									<option value="true">Sí</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label class="form-label">Fecha de Vencimiento</label> <input
-									type="date" th:field="*{diasVencimiento}" />
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="form-label">Imagen del Producto</label> <input
-								type="text" th:field="*{imagen}"
-								placeholder="URL o identificador de imagen" />
-						</div>
-
-						<div class="d-flex" style="gap: 8px; margin-top: 8px;">
-							<button type="submit" class="custom-btn primary"
-								th:text="${productoForm.codigo != null} ? 'Actualizar Producto' : 'Crear Producto'"></button>
-							<button type="reset" class="custom-btn secondary">Limpiar</button>
-							<button type="submit"
-								th:class="${activo} ? 'custom-btn danger btn-sm' : 'custom-btn success btn-sm'">
-								<span th:text="${activo} ? 'Desactivar' : 'Activar'"></span>
-							</button>
-
-						</div>
-
-					</form>
-				</div>
-			</section>
+			</div>
 
 			<!-- Lista de Productos -->
 			<section class="content-card">
@@ -177,11 +70,12 @@
 								<td th:text="${p.stockActual}"></td>
 								<td th:text="${p.categoriaNombre}"></td>
 								<td th:text="${p.stockActual}"></td>
-								
+
 								<td>
 									<div class="action-buttons">
 										<form method="post"
-											th:action="@{/catalogo/productos/activar-desactivar}" th:class="${p.activo} ? 'custom-btn danger btn-sm' : 'custom-btn success btn-sm'">
+											th:action="@{/catalogo/productos/activar-desactivar}"
+											th:class="${p.activo} ? 'custom-btn danger btn-sm' : 'custom-btn success btn-sm'">
 											<input type="hidden" name="codigo" th:value="${p.codigo}" />
 
 											<button type="submit"

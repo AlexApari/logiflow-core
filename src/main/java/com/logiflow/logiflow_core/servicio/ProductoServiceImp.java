@@ -151,5 +151,12 @@ public class ProductoServiceImp implements ProductoService {
 		dto.setActivo(p.getActivo());
 		return dto;
 	}
+	@Override
+	public List<ProductoResumenDTO> listarPorCategoria(Long categoriaId) {
+		// TODO Auto-generated method stub
+		return productoRepositorio.findByCategoriaId(categoriaId).stream()
+	            .map(this::convertirAResumenDTO)
+	            .toList();
+	}
 
 }

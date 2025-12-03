@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LogiFlow - Clientes</title>
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css" th:href="@{/css/Style.css}">
+</head>
+<body>
+	<div th:replace="fragmentos/Header :: header"></div>
+	<div class="container">
+		<div th:replace="fragmentos/Sidebar :: sidebar"></div>
+		<main class="main-content">
+			<!-- Clientes Section -->
+			<section id="clientes" class="form-section active">
+				<div class="page-header">
+					<h2 class="page-title">Gestión de Clientes</h2>
+					<p class="page-subtitle">Administrar clientes y destinatarios</p>
+				</div>
+				<div class="d-flex justify-content-between align-items-center mb-3">
+					<a th:href="@{/operaciones/clientes/nuevo}" class="btn btn-primary">
+						<i class="fas fa-plus"></i> Nuevo Cliente
+					</a>
+
+					<form class="form-inline" method="get"
+						th:action="@{/operaciones/clientes}">
+						<div class="form-group">
+							<select name="categoriaCliente" class="form-control"
+								onchange="this.form.submit()">
+								<option value="">Seleccionar categoria</option>
+								<option value="VIP">VIP</option>
+								<option value="REGULAR">Regular</option>
+								<option value="OCASIONAL">Ocasional</option>
+							</select>
+						</div>
+					</form>
+					<section id="lista-proveedores" class="content-card">
+						<div class="page-header">
+							<h2 class="page-title">Lista de Pedidos</h2>
+							<p class="page-subtitle">Ver y administrar pedidos existentes</p>
+						</div>
+						<div class="content-card">
+							<table class="custom-table">
+								<thead>
+									<tr>
+										<th>Tipo de Documento</th>
+										<th>Numero de Documento</th>
+										<th>Nombres</th>
+										<th>Apellidos</th>
+										<th>Nombre Comercial</th>
+										<th>Ciudad</th>
+										<th>Tipo de Cliente</th>
+										<th>Categoria de Cliente</th>
+										<th>Acciones</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="c : ${clientes}">
+										<td th:text="${c.tipoDocumento}"></td>
+										<td th:text="${c.numeroDocumento}"></td>
+										<td th:text="${c.nombres}"></td>
+										<td th:text="${c.apellidos}"></td>
+										<td th:text="${c.nombreComercial}"></td>
+										<td th:text="${c.Ciudad}"></td>
+										<td th:text="${c.tipoCliente}"></td>
+										<td th:text="${c.categoriaCliente}"></td>
+										<td>
+											<div class="action-buttons">
+												<input type="hidden" name="ruc" th:value="${c.id}" />
+												<a
+													th:href="@{'/operaciones/clientes/editar/' + ${c.id}}"
+													class="custom-btn primary btn-sm">
+													<button type="submit" class="custom-btn primary btn-sm">Editar</button>
+												</a>
+												<button type="submit" class="custom-btn danger btn-sm">Eliminar</button>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</section>
+
+				</div>
+
+			</section>
+		</main>
+	</div>
+
+
+</body>
+</html>

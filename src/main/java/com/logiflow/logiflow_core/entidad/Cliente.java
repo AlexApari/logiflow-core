@@ -76,11 +76,11 @@ public class Cliente {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_cliente", length = 10)
-    private TipoCliente tipoCliente = TipoCliente.NATURAL;
+    private TipoCliente tipoCliente;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "categoria_cliente", length = 10)
-    private CategoriaCliente categoriaCliente = CategoriaCliente.REGULAR;
+    private CategoriaCliente categoriaCliente;
 
     @Column(name = "limite_credito", precision = 12, scale = 2)
     private BigDecimal limiteCredito = BigDecimal.ZERO;
